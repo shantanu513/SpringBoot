@@ -43,5 +43,11 @@ public class ProductController {
     public void deleteProductById(@PathVariable Long id) {
         productService.deleteById(id);
     }
+
+    @GetMapping("/returnName")
+    public String updateProduct() {
+        return "Hello from Openshift";
+    }
+
     
 }
