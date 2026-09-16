@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: SpringBoot
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:mysql://localhost:3306/backend_dev
+    username: app_user
+    password: StrongPassword123!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  main:
+    allow-circular-references: true
+
+server:
+  port: 8090
+  servlet:
+    context-path: /api-rr
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info"
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
+      group:
+        readiness:
+          include: "readinessState,db,diskSpace"
+        liveness:
+          include: "livenessState"
